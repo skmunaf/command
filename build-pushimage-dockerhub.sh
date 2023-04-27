@@ -4,7 +4,7 @@
 #sudo chmod 666 /var/run/docker.sock
 #sudo systemctl enable docker.service
 #sudo systemctl start docker.service
-
+#docker build -t skmunaf/jenkins . some times we can .
 docker build -t skmunaf/jenkins
 docker login -u skmunaf -p Abdul@2023
 docker push skmunaf/jenkins

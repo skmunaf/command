@@ -44,3 +44,4 @@ sudo usermod -a -G docker ec2-user
 sudo systemctl enable docker.service
 sudo systemctl start docker.service
 #put the password to the Ec2 "sudo passwd ec2-user" 2nd step "sudo vi /etc/ssh/sshd_config" change the password attan.... from no to yes
+#sudo systemctl restart sshd - this will start the services 

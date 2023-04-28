@@ -1,0 +1,19 @@
+FROM ubuntu
+MAINTAINER munaf	
+WORKDIR /opt
+#RUN cd /opt
+#RUN sudo chown -R opt:opt /opt
+RUN wget https://github.com/adoptium/temurin8-binaries/releases/download/jdk8u362-b09/OpenJDK8U-jdk_x64_linux_hotspot_8u362b09.tar.gz
+RUN tar -zxvf OpenJDK8U-jdk_x64_linux_hotspot_8u362b09.tar.gz
+RUN mv jdk8u362-b09/ java8
+RUN wget https://dlcdn.apache.org/maven/maven-3/3.9.1/binaries/apache-maven-3.9.1-bin.tar.gz
+RUN tar -zxvf apache-maven-3.9.1-bin.tar.gz
+RUN mv apache-maven-3.9.1 maven3
+RUN wget https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.87/bin/apache-tomcat-8.5.87.tar.gz
+RUN tar -zxvf apache-tomcat-8.5.87.tar.gz
+RUN mv apache-tomcat-8.5.87 tomcat8
+RUN sh /opt/tomcat8/bin/startup.sh
+RUN sudo sed -i '$a export JAVA_HOME=/opt/java8' /etc/profile
+RUN sudo sed -i '$a export PATH=$PATH:/opt/java8/bin' /etc/profile
+RUN sudo sed -i '$a export M2_HOME=/opt/maven3' /etc/profile
+RUN sudo sed -i '$a export PATH=$PATH:/opt/maven3/bin' /etc/profile

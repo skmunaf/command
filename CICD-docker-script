@@ -1,0 +1,7 @@
+#!/bin/bash
+sudo yum install docker
+sudo systemctl enable docker.service
+sudo systemctl start docker.service
+sudo docker pull skmunaf/jenkins
+sudo docker kill my-cont
+sudo docker run --rm -itd --name=my-cont -p 8080:8080 skmunaf/jenkins
